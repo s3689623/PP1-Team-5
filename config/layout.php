@@ -78,7 +78,7 @@ return [
         'self' => [
             'display' => true,
             'width' => 'fluid', // fixed, fluid
-            'theme' => 'dark', // light, dark
+            'theme' => 'light', // light, dark
             'fixed' => [
                 'desktop' => true,
                 'mobile' => true
@@ -96,7 +96,7 @@ return [
                 'arrow' => true,
                 'toggle' => 'click',
                 'submenu' => [
-                    'theme' => 'dark',
+                    'theme' => 'light',
                     'arrow' => true,
                 ]
             ],
