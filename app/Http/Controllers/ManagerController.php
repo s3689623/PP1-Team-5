@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Manager;
 use Illuminate\Http\Request;
+
+use App\Models\Manager;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
 {
@@ -66,5 +69,51 @@ class ManagerController extends Controller
         $page_description = 'overview';
 
         return view('pages.manager.dashboard', compact('page_title', 'page_description'));
+    }
+
+    public function showUsers()
+    {
+        $page_title = 'User List';
+        $page_description = '';
+
+        return view('pages.manager.user-list', compact('page_title', 'page_description'))
+            ->with('users', User::All());
+    }
+
+    public function showNewUser($errors = [])
+    {
+        $page_title = 'Create New User';
+        $page_description = '';
+
+        return view('pages.manager.user-new', compact('page_title', 'page_description'));
+    }
+
+    public function newUser(Request $request)
+    {
+        $page_title = 'User List';
+        $page_description = '';
+
+        $input = $request->all();
+        $errors = [];
+
+        if (User::where('email', $input['email'])->first()) {
+            array_push($errors, 'This email has been registered!');
+        }
+
+        if ($input['password'] !== $input['confirm-password']) {
+            array_push($errors, 'Password and confirm password not the same!');
+        }
+
+        if (count($errors) == 0) {
+            User::create([
+                'email' => $input['email'],
+                'first_name' => $input['first-name'],
+                'last_name' => $input['last-name'],
+                'password' => Hash::make($input['password']),
+            ]);
+            return redirect('/manager/member/list');
+        }
+
+        return view('pages.manager.user-new', compact('page_title', 'page_description'))->with('errors', $errors);
     }
 }

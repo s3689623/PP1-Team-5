@@ -34,6 +34,8 @@
                             {{ Menu::renderVerMenu(config('menu_aside.member')) }}
                         @elseif($user['role'] == 'admin')
                             {{ Menu::renderVerMenu(config('menu_aside.admin')) }}
+                        @elseif($user['role'] == 'manager')
+                            {{ Menu::renderVerMenu(config('menu_aside.manager')) }}
                         @else
                             {{ Menu::renderVerMenu(config('menu_aside.member')) }}
                         @endif

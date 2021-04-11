@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Manager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 class AdminController extends Controller
 {
     public function showLogin($errors = [])
@@ -15,14 +18,14 @@ class AdminController extends Controller
         $user = session('user');
         if (!!$user) {
             switch ($user['role']) {
-                case 'admin':
-                    $redirectURL = '/admin';
+                case 'manager':
+                    $redirectURL = '/manager';
                     break;
                 case 'member':
                     $redirectURL = '/member';
                     break;
-                case 'dealer':
-                    $redirectURL = '/dealer';
+                case 'admin':
+                    $redirectURL = '/admin';
                     break;
             }
             return redirect($redirectURL);
@@ -36,10 +39,9 @@ class AdminController extends Controller
         $input = $request->all();
 
         $admin = Admin::where('username', $input['username'])->first();
+        $admin['role'] = 'admin';
         if ($admin) {
-            $request->session()->put('user', [
-                'role' => 'admin',
-            ]);
+            $request->session()->put('user', $admin);
 
             if (!!$request->get('redirect')) {
                 $redirectURL = $request->get('redirect');
@@ -66,5 +68,49 @@ class AdminController extends Controller
         $page_description = 'overview';
 
         return view('pages.admin.dashboard', compact('page_title', 'page_description'));
+    }
+
+    public function showManagers()
+    {
+        $page_title = 'Manager List';
+        $page_description = '';
+
+        return view('pages.admin.manager-list', compact('page_title', 'page_description'))
+            ->with('managers', Manager::All());
+    }
+
+    public function showNewManager($errors = [])
+    {
+        $page_title = 'Create New Manager';
+        $page_description = '';
+
+        return view('pages.admin.manager-new', compact('page_title', 'page_description'));
+    }
+
+    public function newManager(Request $request)
+    {
+        $page_title = 'Manager List';
+        $page_description = '';
+
+        $input = $request->all();
+        $errors = [];
+
+        if (Manager::where('username', $input['username'])->first()) {
+            array_push($errors, 'This username has been used!');
+        }
+
+        if ($input['password'] !== $input['confirm-password']) {
+            array_push($errors, 'Password and confirm password not the same!');
+        }
+
+        if (count($errors) == 0) {
+            Manager::create([
+                'username' => $input['username'],
+                'password' => Hash::make($input['password']),
+            ]);
+            return redirect('/admin/manager/list');
+        }
+
+        return view('pages.admin.manager-new', compact('page_title', 'page_description'))->with('errors', $errors);
     }
 }
