@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+
 class AdminController extends Controller
 {
     public function showLogin($errors = [])
@@ -15,14 +16,14 @@ class AdminController extends Controller
         $user = session('user');
         if (!!$user) {
             switch ($user['role']) {
-                case 'admin':
-                    $redirectURL = '/admin';
+                case 'manager':
+                    $redirectURL = '/manager';
                     break;
                 case 'member':
                     $redirectURL = '/member';
                     break;
-                case 'dealer':
-                    $redirectURL = '/dealer';
+                case 'admin':
+                    $redirectURL = '/admin';
                     break;
             }
             return redirect($redirectURL);
@@ -36,10 +37,9 @@ class AdminController extends Controller
         $input = $request->all();
 
         $admin = Admin::where('username', $input['username'])->first();
+        $admin['role'] = 'admin';
         if ($admin) {
-            $request->session()->put('user', [
-                'role' => 'admin',
-            ]);
+            $request->session()->put('user', $admin);
 
             if (!!$request->get('redirect')) {
                 $redirectURL = $request->get('redirect');
