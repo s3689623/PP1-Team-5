@@ -50,6 +50,11 @@ Route::prefix('manager')->group(function () {
     Route::middleware(['manager-auth'])->group(function () {
         Route::get('logout', 'ManagerController@managerLogout');
         Route::get('/', 'ManagerController@showDashboard');
+        Route::prefix('member')->group(function () {
+            Route::get('/list', 'ManagerController@showUsers');
+            Route::get('/new', 'ManagerController@showNewUser');
+            Route::post('/new', 'ManagerController@newUser');
+        });
     });
 });
 
