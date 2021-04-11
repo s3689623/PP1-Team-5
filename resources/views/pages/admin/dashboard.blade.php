@@ -1,12 +1,12 @@
 {{-- Extends layout --}}
 @extends('layout.default')
 
-{{-- Styles Section --}}
-@section('styles')
-@endsection
-
 {{-- Content --}}
 @section('content')
+@endsection
+
+{{-- Styles Section --}}
+@section('styles')
 @endsection
 
 {{-- Scripts Section --}}

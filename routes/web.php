@@ -15,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UserController@showDashboard');
 
 Route::get('/theme', 'PagesController@index');
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/login', 'AdminController@showLogin');
+    Route::post('/login', 'AdminController@adminLogin');
+    Route::middleware(['admin-auth'])->group(function () {
+        Route::get('logout', 'AdminController@adminLogout');
+        Route::get('/', 'AdminController@showDashboard');
+    });
+});
+
+
 // Demo routes
 Route::prefix('theme')->group(function () {
     Route::get('/', 'PagesController@index');

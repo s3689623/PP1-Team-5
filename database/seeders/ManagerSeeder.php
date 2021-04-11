@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class AdminSeeder extends Seeder
+class ManagerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,8 +17,8 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
-                'username' => 'ADMIN',
-                'password' => Hash::make('ADMIN'),
+                'username' => 'MANAGER',
+                'password' => Hash::make('MANAGER'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -26,8 +26,8 @@ class AdminSeeder extends Seeder
 
         // Create Administrators
         DB::statement("SET foreign_key_checks=0");
-        DB::table('admins')->truncate();
+        DB::table('managers')->truncate();
         DB::statement("SET foreign_key_checks=1");
-        DB::table('admins')->insert($admins);
+        DB::table('managers')->insert($admins);
     }
 }
