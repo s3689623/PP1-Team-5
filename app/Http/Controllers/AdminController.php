@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Manager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -66,5 +68,49 @@ class AdminController extends Controller
         $page_description = 'overview';
 
         return view('pages.admin.dashboard', compact('page_title', 'page_description'));
+    }
+
+    public function showManagers()
+    {
+        $page_title = 'Manager List';
+        $page_description = '';
+
+        return view('pages.admin.manager-list', compact('page_title', 'page_description'))
+            ->with('managers', Manager::All());
+    }
+
+    public function showNewManager($errors = [])
+    {
+        $page_title = 'Create New Manager';
+        $page_description = '';
+
+        return view('pages.admin.manager-new', compact('page_title', 'page_description'));
+    }
+
+    public function newManager(Request $request)
+    {
+        $page_title = 'Manager List';
+        $page_description = '';
+
+        $input = $request->all();
+        $errors = [];
+
+        if (Manager::where('username', $input['username'])->first()) {
+            array_push($errors, 'This username has been used!');
+        }
+
+        if ($input['password'] !== $input['confirm-password']) {
+            array_push($errors, 'Password and confirm password not the same!');
+        }
+
+        if (count($errors) == 0) {
+            Manager::create([
+                'username' => $input['username'],
+                'password' => Hash::make($input['password']),
+            ]);
+            return redirect('/admin/manager/list');
+        }
+
+        return view('pages.admin.manager-new', compact('page_title', 'page_description'))->with('errors', $errors);
     }
 }

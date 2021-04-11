@@ -1,7 +1,6 @@
 {{-- Extends layout --}}
 @extends('layout.default')
-<link href="{{asset('customize/css/member-login.css')}}" rel="stylesheet" type="text/css"/>
-{{-- Styles Section --}}
+
 @section('styles')
 @endsection
 

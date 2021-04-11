@@ -18,4 +18,6 @@ class Manager extends Authenticatable
     protected $primaryKey = 'id';
 
     public $timestamps = true;
+
+    protected $guarded = [];
 }

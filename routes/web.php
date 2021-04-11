@@ -41,6 +41,11 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['admin-auth'])->group(function () {
         Route::get('logout', 'AdminController@adminLogout');
         Route::get('/', 'AdminController@showDashboard');
+        Route::prefix('manager')->group(function () {
+            Route::get('/list', 'AdminController@showManagers');
+            Route::get('/new', 'AdminController@showNewManager');
+            Route::post('/new', 'AdminController@newManager');
+        });
     });
 });
 
