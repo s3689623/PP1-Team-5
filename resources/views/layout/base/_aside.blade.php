@@ -53,6 +53,8 @@
                     {{ Menu::renderHorMenu(config('menu_header.member')) }}
                 @elseif($user['role'] == 'admin')
                     {{ Menu::renderHorMenu(config('menu_header.admin')) }}
+                @elseif($user['role'] == 'manager')
+                    {{ Menu::renderHorMenu(config('menu_header.manager')) }}
                 @else
                     {{ Menu::renderHorMenu(config('menu_header.member')) }}
                 @endif
