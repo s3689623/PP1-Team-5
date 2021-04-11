@@ -17,8 +17,8 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
-                'username' => 'hdplz',
-                'password' => Hash::make('hdplz'),
+                'username' => 'RMIT',
+                'password' => Hash::make('RMIT'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
