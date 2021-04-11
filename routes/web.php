@@ -12,10 +12,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'UserController@showDashboard');
+Route::get('/', function () {
+    return redirect('/member');
+});
+
+
+Route::prefix('member')->group(function () {
+    Route::get('/login', function () {
+        return view('pages.user.login');
+    });
+    Route::post('/login', 'UserController@userLogin');
+    Route::get('/register', function () {
+        return view('pages.user.register');
+    });
+    Route::post('/register', 'UserController@userRegister');
+
+    Route::group(['middleware' => ['member-auth']], function () {
+        Route::get('/logout', 'UserController@userLogout');
+        Route::get('/', 'UserController@showDashboardPage');
+    });
+});
 
 Route::get('/theme', 'PagesController@index');
-
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', 'AdminController@showLogin');
@@ -26,6 +44,14 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+Route::prefix('manager')->group(function () {
+    Route::get('/login', 'ManagerController@showLogin');
+    Route::post('/login', 'ManagerController@managerLogin');
+    Route::middleware(['manager-auth'])->group(function () {
+        Route::get('logout', 'ManagerController@managerLogout');
+        Route::get('/', 'ManagerController@showDashboard');
+    });
+});
 
 // Demo routes
 Route::prefix('theme')->group(function () {
