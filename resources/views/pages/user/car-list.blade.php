@@ -7,7 +7,7 @@
         <div class="card-header">
         </div>
         <div class="card-body">
-            <table class="table">
+            <table class="table" id="car-list">
                 <thead>
                 <tr>
                     <th>Number</th>
@@ -49,4 +49,18 @@
 
 {{-- Scripts Section --}}
 @section('scripts')
+    <script src="{{asset('plugins/custom/datatables/datatables.bundle.js')}}"></script>
+    <script>
+        // begin first table
+        $('#car-list').DataTable({
+            responsive: true,
+
+            lengthMenu: [5, 10, 25, 50],
+
+            pageLength: 7,
+
+            // Order settings
+            order: [[1, 'desc']],
+        });
+    </script>
 @endsection
