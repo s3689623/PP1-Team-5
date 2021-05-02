@@ -16,7 +16,6 @@ Route::get('/', function () {
     return redirect('/member');
 });
 
-
 Route::prefix('member')->group(function () {
     Route::get('/login', function () {
         return view('pages.user.login');
@@ -34,6 +33,9 @@ Route::prefix('member')->group(function () {
             Route::get('/list', 'UserController@showCars');
             Route::prefix('car')->group(function () {
             });
+        });
+        Route::prefix('order')->group(function () {
+            Route::get('/list', 'UserController@showOrders');
         });
     });
 });

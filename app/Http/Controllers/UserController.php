@@ -85,6 +85,14 @@ class UserController extends Controller
         return view('pages.user.car-list', compact('page_title', 'page_description'))->with('cars', Car::where('status', 'free')->get());
     }
 
+    public function showOrders()
+    {
+        $page_title = 'Order List';
+        $page_description = '';
+
+        return view('pages.user.order-list', compact('page_title', 'page_description'))
+            ->with('orders', Order::where('user_id', session('user')->id)->get());
+    }
 }
 
 ?>

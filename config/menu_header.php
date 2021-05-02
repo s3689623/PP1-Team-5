@@ -15,6 +15,13 @@ return [
             'page' => '/member/car/list',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Order List',
+            'root' => true,
+            'page' => '/member/order/list',
+            'new-tab' => false,
+        ],
+        [
             'title' => 'Logout',
             'root' => true,
             'page' => '/member/logout',
