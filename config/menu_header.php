@@ -10,6 +10,11 @@ return [
             'new-tab' => false,
         ],
         [
+            'title' => 'Car List',
+            'root' => true,
+            'page' => '/member/car/list',
+            'new-tab' => false,
+        ],
             'title' => 'Logout',
             'root' => true,
             'page' => '/member/logout',

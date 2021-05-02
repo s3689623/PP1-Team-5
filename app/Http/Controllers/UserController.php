@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\User;
 use App\Models\Payment;
 
@@ -75,6 +76,15 @@ class UserController extends Controller
     {
         return view('pages.user.dashboard');
     }
+
+    public function showCars()
+    {
+        $page_title = 'Car List';
+        $page_description = '';
+
+        return view('pages.user.car-list', compact('page_title', 'page_description'))->with('cars', Car::where('status', 'free')->get());
+    }
+
 }
 
 ?>

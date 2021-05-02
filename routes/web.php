@@ -30,6 +30,11 @@ Route::prefix('member')->group(function () {
     Route::group(['middleware' => ['member-auth']], function () {
         Route::get('/logout', 'UserController@userLogout');
         Route::get('/', 'UserController@showDashboardPage');
+        Route::prefix('car')->group(function () {
+            Route::get('/list', 'UserController@showCars');
+            Route::prefix('car')->group(function () {
+            });
+        });
     });
 });
 
