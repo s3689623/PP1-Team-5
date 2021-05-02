@@ -48,6 +48,10 @@ Route::prefix('admin')->group(function () {
         });
         Route::prefix('car')->group(function () {
             Route::get('/list', 'AdminController@showCars');
+            Route::get('/new', 'AdminController@showNewCar');
+            Route::post('/new', 'AdminController@newCar');
+            Route::get('/{carId}', 'AdminController@showEditCar');
+            Route::post('/{carId}', 'AdminController@editCar');
         });
     });
 });
