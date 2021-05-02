@@ -10,12 +10,6 @@ return [
             'icon' => 'media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
             'page' => '/',
             'new-tab' => false,
-        ],
-        [
-            'title' => 'Logout',
-            'root' => true,
-            'page' => '/member/logout',
-            'new-tab' => false,
         ]
     ],
     'admin' => [
@@ -30,12 +24,6 @@ return [
             'title' => 'Manager List',
             'root' => true,
             'page' => '/admin/manager/list',
-            'new-tab' => false,
-        ],
-        [
-            'title' => 'Logout',
-            'root' => true,
-            'page' => '/admin/logout',
             'new-tab' => false,
         ]
     ],

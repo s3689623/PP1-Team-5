@@ -16,7 +16,6 @@ Route::get('/', function () {
     return redirect('/member');
 });
 
-
 Route::prefix('member')->group(function () {
     Route::get('/login', function () {
         return view('pages.user.login');
@@ -30,6 +29,17 @@ Route::prefix('member')->group(function () {
     Route::group(['middleware' => ['member-auth']], function () {
         Route::get('/logout', 'UserController@userLogout');
         Route::get('/', 'UserController@showDashboardPage');
+        Route::prefix('car')->group(function () {
+            Route::get('/list', 'UserController@showCars');
+            Route::prefix('car')->group(function () {
+            });
+        });
+        Route::prefix('order')->group(function () {
+            Route::get('/list', 'UserController@showOrders');
+            Route::get('/cancel/{orderId}', 'UserController@cancelOrder');
+            Route::get('/new/{carId}', 'UserController@orderCar');
+            Route::get('/pay/{orderId}', 'UserController@payOrder');
+        });
     });
 });
 
@@ -45,6 +55,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/list', 'AdminController@showManagers');
             Route::get('/new', 'AdminController@showNewManager');
             Route::post('/new', 'AdminController@newManager');
+        });
+        Route::prefix('car')->group(function () {
+            Route::get('/list', 'AdminController@showCars');
+            Route::get('/new', 'AdminController@showNewCar');
+            Route::post('/new', 'AdminController@newCar');
+            Route::get('/{carId}', 'AdminController@showEditCar');
+            Route::post('/{carId}', 'AdminController@editCar');
         });
     });
 });

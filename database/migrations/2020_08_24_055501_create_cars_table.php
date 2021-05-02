@@ -20,6 +20,7 @@ class CreateCarsTable extends Migration
             $table->string('number');
             $table->string('type')->nullable();
             $table->string('color')->nullable();
+            $table->string('postcode')->nullable();
             $table->double('lat', 14, 10)->nullable();
             $table->double('lng', 14, 10)->nullable();
             $table->string('status')->default('free');

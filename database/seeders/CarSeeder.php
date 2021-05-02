@@ -36,6 +36,14 @@ class CarSeeder extends Seeder
             'green',
             'red'
         ];
+        $postCode = [
+            '3001',
+            '3002',
+            '3003',
+            '3004',
+            '3005',
+            '3006'
+        ];
 
         $cars = [];
         for($i = 0; $i < 10; $i ++) {
@@ -47,7 +55,10 @@ class CarSeeder extends Seeder
                 'color' => $colors[rand(0, count($colors) - 1)],
                 'lat' => $lat + rand(-$randomRange, $randomRange)/$zoom,
                 'lng' => $lng + rand(-$randomRange, $randomRange)/$zoom,
-                'status' => 'free'
+                'postcode' => $postCode[rand(0, count($postCode) - 1)],
+                'status' => 'free',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]);
         }
 

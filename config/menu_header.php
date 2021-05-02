@@ -10,6 +10,18 @@ return [
             'new-tab' => false,
         ],
         [
+            'title' => 'Car List',
+            'root' => true,
+            'page' => '/member/car/list',
+            'new-tab' => false,
+        ],
+        [
+            'title' => 'Order List',
+            'root' => true,
+            'page' => '/member/order/list',
+            'new-tab' => false,
+        ],
+        [
             'title' => 'Logout',
             'root' => true,
             'page' => '/member/logout',
@@ -28,6 +40,12 @@ return [
         'title' => 'Manager List',
         'root' => true,
         'page' => '/admin/manager/list',
+        'new-tab' => false,
+    ],
+    [
+        'title' => 'Car List',
+        'root' => true,
+        'page' => '/admin/car/list',
         'new-tab' => false,
     ],
     [
