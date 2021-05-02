@@ -107,6 +107,15 @@ class UserController extends Controller
         return redirect('/member/order/list');
     }
 
+    public function payOrder($orderId)
+    {
+        $order = Order::where('id', $orderId)->first();
+        $car = Car::where('id', $order->car_id)->first();
+        $car->update(['status' => 'free']);
+        $order->update(['status' => 'paid']);
+        return redirect('/member/order/list');
+    }
+
     public function showOrders()
     {
         $page_title = 'Order List';
