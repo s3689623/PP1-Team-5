@@ -31,6 +31,12 @@ return [
         'new-tab' => false,
     ],
     [
+        'title' => 'Car List',
+        'root' => true,
+        'page' => '/admin/car/list',
+        'new-tab' => false,
+    ],
+    [
         'title' => 'Logout',
         'root' => true,
         'page' => '/admin/logout',

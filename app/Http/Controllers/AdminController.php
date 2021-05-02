@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Manager;
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -113,4 +114,14 @@ class AdminController extends Controller
 
         return view('pages.admin.manager-new', compact('page_title', 'page_description'))->with('errors', $errors);
     }
+
+    public function showCars()
+    {
+        $page_title = 'Car List';
+        $page_description = '';
+
+        return view('pages.admin.car-list', compact('page_title', 'page_description'))
+            ->with('cars', Car::All());
+    }
+
 }

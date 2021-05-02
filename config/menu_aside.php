@@ -31,12 +31,6 @@ return [
             'root' => true,
             'page' => '/admin/manager/list',
             'new-tab' => false,
-        ],
-        [
-            'title' => 'Logout',
-            'root' => true,
-            'page' => '/admin/logout',
-            'new-tab' => false,
         ]
     ],
     'manager' => [

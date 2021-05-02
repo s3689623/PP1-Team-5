@@ -46,6 +46,9 @@ Route::prefix('admin')->group(function () {
             Route::get('/new', 'AdminController@showNewManager');
             Route::post('/new', 'AdminController@newManager');
         });
+        Route::prefix('car')->group(function () {
+            Route::get('/list', 'AdminController@showCars');
+        });
     });
 });
 
