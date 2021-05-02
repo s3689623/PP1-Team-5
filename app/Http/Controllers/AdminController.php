@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Manager;
 use App\Models\Car;
+use App\Models\Make;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -124,4 +127,32 @@ class AdminController extends Controller
             ->with('cars', Car::All());
     }
 
+
+
+    public function showNewCar()
+    {
+        $page_title = 'Create New Car';
+        $page_description = '';
+
+        return view('pages.admin.car-new', compact('page_title', 'page_description'))
+            ->with('makes', Make::all())->with('users', User::all());
+    }
+
+    public function newCar(Request $request)
+    {
+        $input = $request->all();
+
+        Car::create([
+            'user_id' => $input['user_id'],
+            'make_id' => $input['make_id'],
+            'number' => $input['number'],
+            'type' => $input['type'],
+            'color' => $input['color'],
+            'lat' => $input['lat'],
+            'lng' => $input['lng'],
+        ]);
+
+
+        return redirect('/admin/car/list');
+    }
 }
