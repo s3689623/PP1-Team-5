@@ -40,9 +40,11 @@
                         @endif
                         <td>{{$order->status}}</td>
                         <td>
-                            <a href="{{url('/member/order/cancel/' . $order->id)}}" class="btn btn-primary mr-2">Cancel</a>
-                            @if($order->status != 'paid')
-                            <a href="{{url('/member/order/pay/' . $order->id)}}" class="btn btn-danger mr-2">Pay</a>
+                            @if($order->status == 'created')
+                                <a href="{{url('/member/order/pay/' . $order->id)}}" class="btn btn-primary mr-2">Pay</a>
+                            @endif
+                            @if($order->status == 'created')
+                                    <a href="{{url('/member/order/cancel/' . $order->id)}}" class="btn btn-danger mr-2">Cancel</a>
                             @endif
                         </td>
                     </tr>
