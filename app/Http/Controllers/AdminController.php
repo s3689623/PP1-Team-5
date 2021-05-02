@@ -127,7 +127,14 @@ class AdminController extends Controller
             ->with('cars', Car::All());
     }
 
+    public function showEditCar($carId)
+    {
+        $page_title = 'Edit Car';
+        $page_description = '';
 
+        return view('pages.admin.car-edit', compact('page_title', 'page_description'))
+            ->with('makes', Make::all())->with('users', User::all())->with('car', Car::firstWhere('id', $carId));
+    }
 
     public function showNewCar()
     {
@@ -154,5 +161,23 @@ class AdminController extends Controller
 
 
         return redirect('/admin/car/list');
+    }
+
+    public function editCar(Request $request, $carId)
+    {
+        $input = $request->all();
+
+        Car::where('id', $carId)->update([
+            'user_id' => $input['user_id'],
+            'make_id' => $input['make_id'],
+            'number' => $input['number'],
+            'type' => $input['type'],
+            'color' => $input['color'],
+            'lat' => $input['lat'],
+            'lng' => $input['lng'],
+        ]);
+
+
+        return redirect("/admin/car/$carId");
     }
 }
