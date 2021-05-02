@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Order;
 use App\Models\User;
 use App\Models\Payment;
 
@@ -85,6 +86,17 @@ class UserController extends Controller
         return view('pages.user.car-list', compact('page_title', 'page_description'))->with('cars', Car::where('status', 'free')->get());
     }
 
+    public function orderCar($carId)
+    {
+        $car = Car::where('id', $carId)->first();
+        $car->update(['status' => 'ordered']);
+
+        Order::create([
+            'user_id' => session('user')->id,
+            'car_id' => $carId
+        ]);
+        return redirect('/member/order/list');
+    }
     public function showOrders()
     {
         $page_title = 'Order List';
