@@ -36,6 +36,9 @@ Route::prefix('member')->group(function () {
         });
         Route::prefix('order')->group(function () {
             Route::get('/list', 'UserController@showOrders');
+            Route::get('/cancel/{orderId}', 'UserController@cancelOrder');
+            Route::get('/new/{carId}', 'UserController@orderCar');
+            Route::get('/pay/{orderId}', 'UserController@payOrder');
         });
     });
 });
