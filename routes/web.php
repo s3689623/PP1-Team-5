@@ -76,6 +76,8 @@ Route::prefix('manager')->group(function () {
             Route::get('/list', 'ManagerController@showUsers');
             Route::get('/new', 'ManagerController@showNewUser');
             Route::post('/new', 'ManagerController@newUser');
+            Route::get('/update/{userId}', 'ManagerController@showUpdateUser');
+            Route::post('/update/{userId}', 'ManagerController@updateUser');
         });
         Route::prefix('self')->group(function () {
             Route::get('/update', 'ManagerController@showUpdateSelf');

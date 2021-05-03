@@ -33,15 +33,15 @@
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="number">Number</label>
-                                <input class="form-control m-input" type="text" placeholder="Number" name="number" required value="{{$car->number}}">
+                                <input class="form-control m-input" type="text" placeholder="Number" name="number" id="number" required value="{{$car->number}}">
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="number">Color</label>
-                                <input class="form-control m-input" type="text" placeholder="Color" name="color" required value="{{$car->color}}">
+                                <input class="form-control m-input" type="text" placeholder="Color" name="color" id="color" required value="{{$car->color}}">
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="postcode">Postcode</label>
-                                <input class="form-control m-input" type="text" placeholder="Postcode" name="postcode" required value="{{$car->postcode}}">
+                                <input class="form-control m-input" type="text" placeholder="Postcode" name="postcode" id="postcode" required value="{{$car->postcode}}">
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="type">Type</label>
