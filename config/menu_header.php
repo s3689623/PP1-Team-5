@@ -70,6 +70,12 @@ return [
         'new-tab' => false,
     ],
     [
+        'title' => 'Update detail',
+        'root' => true,
+        'page' => '/manager/self/update',
+        'new-tab' => false,
+    ],
+    [
         'title' => 'Logout',
         'root' => true,
         'page' => '/manager/logout',

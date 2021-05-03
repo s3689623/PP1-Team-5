@@ -116,4 +116,40 @@ class ManagerController extends Controller
 
         return view('pages.manager.user-new', compact('page_title', 'page_description'))->with('errors', $errors);
     }
+
+    public function showUpdateSelf() {
+        $page_title = 'Update Self Detail';
+        $page_description = '';
+
+        return view('pages.manager.self-update', compact('page_title', 'page_description'))
+            ->with('manager', Manager::firstWhere('id', session('user')->id));
+    }
+
+    public function updateSelf(Request $request) {
+        $input = $request->all();
+        Manager::where('id', session('user')->id)->update([
+            'username' => $input['username'],
+        ]);
+
+        return redirect('/manager/self/update');
+    }
+
+    public function showUpdateUser($userId) {
+        $page_title = 'Update User Detail';
+        $page_description = '';
+
+        return view('pages.manager.user-update', compact('page_title', 'page_description'))
+            ->with('user', User::firstWhere('id', $userId));
+    }
+
+    public function updateUser(Request $request, $userId) {
+        $input = $request->all();
+        User::where('id', $userId)->update([
+            'email' => $input['email'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+        ]);
+
+        return redirect('/manager/member/update/' . $userId);
+    }
 }

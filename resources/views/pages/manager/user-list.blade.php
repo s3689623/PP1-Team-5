@@ -16,6 +16,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Created At</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,11 @@
                         <th scope="row">{{$user->email}}</th>
                         <td>{{$user->first_name}} {{$user->last_name}}</td>
                         <td>{{$user->created_at}}</td>
+                        <td>
+                            <a href="{{url('/manager/member/update/' . $user->id)}}" class="btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" title="View">
+                                <i class="la la-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
