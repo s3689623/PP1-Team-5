@@ -77,6 +77,10 @@ Route::prefix('manager')->group(function () {
             Route::get('/new', 'ManagerController@showNewUser');
             Route::post('/new', 'ManagerController@newUser');
         });
+        Route::prefix('self')->group(function () {
+            Route::get('/update', 'ManagerController@showUpdateSelf');
+            Route::post('/update', 'ManagerController@updateSelf');
+        });
     });
 });
 
