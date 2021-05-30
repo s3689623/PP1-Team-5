@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return redirect('/member');
+    return view('pages.dashboard');
 });
+
+Route::get('/privacy-policy', function () {
+    return view('pages.privacy-policy');
+});
+
 
 Route::prefix('member')->group(function () {
     Route::get('/login', function () {
@@ -56,6 +61,9 @@ Route::prefix('admin')->group(function () {
             Route::get('/new', 'AdminController@showNewManager');
             Route::post('/new', 'AdminController@newManager');
         });
+        Route::prefix('order')->group(function () {
+            Route::get('/list', 'AdminController@showOrders');
+        });
         Route::prefix('car')->group(function () {
             Route::get('/list', 'AdminController@showCars');
             Route::get('/new', 'AdminController@showNewCar');
@@ -88,17 +96,5 @@ Route::prefix('manager')->group(function () {
 
 // Demo routes
 Route::prefix('theme')->group(function () {
-    Route::get('/', 'PagesController@index');
-    Route::get('/datatables', 'PagesController@datatables');
-    Route::get('/ktdatatables', 'PagesController@ktDatatables');
-    Route::get('/select2', 'PagesController@select2');
-    Route::get('/jquerymask', 'PagesController@jQueryMask');
-    Route::get('/icons/custom-icons', 'PagesController@customIcons');
-    Route::get('/icons/flaticon', 'PagesController@flaticon');
-    Route::get('/icons/fontawesome', 'PagesController@fontawesome');
-    Route::get('/icons/lineawesome', 'PagesController@lineawesome');
-    Route::get('/icons/socicons', 'PagesController@socicons');
-    Route::get('/icons/svg', 'PagesController@svg');
-    // Quick search dummy route to display html elements in search dropdown (header search)
     Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 });

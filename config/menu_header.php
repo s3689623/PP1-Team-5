@@ -22,6 +22,12 @@ return [
             'new-tab' => false,
         ],
         [
+            'title' => 'Privacy Policy',
+            'root' => true,
+            'page' => '/privacy-policy',
+            'new-tab' => false,
+        ],
+        [
             'title' => 'Logout',
             'root' => true,
             'page' => '/member/logout',
@@ -46,6 +52,12 @@ return [
         'title' => 'Car List',
         'root' => true,
         'page' => '/admin/car/list',
+        'new-tab' => false,
+    ],
+    [
+        'title' => 'Order List',
+        'root' => true,
+        'page' => '/admin/order/list',
         'new-tab' => false,
     ],
     [
