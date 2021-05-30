@@ -25,7 +25,8 @@
 
             @endif
 
-            <img alt="{{ config('app.name') }}" src="{{ asset('media/logos/'.$kt_logo_image) }}"/>
+{{--            <img alt="{{ config('app.name') }}" src="{{ asset('media/logos/'.$kt_logo_image) }}"/>--}}
+            <img alt="Share Ber" src="{{ asset('media/logos/share-bar-logo.png') }}"/>
         </a>
     </div>
     <div class="d-flex align-items-center">
