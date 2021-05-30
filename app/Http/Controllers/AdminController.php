@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Manager;
 use App\Models\Car;
 use App\Models\Make;
+use App\Models\Order;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -179,5 +180,14 @@ class AdminController extends Controller
 
 
         return redirect("/admin/car/$carId");
+    }
+
+    public function showOrders()
+    {
+        $page_title = 'Order List';
+        $page_description = '';
+
+        return view('pages.admin.order-list', compact('page_title', 'page_description'))
+            ->with('orders', Order::all());
     }
 }
