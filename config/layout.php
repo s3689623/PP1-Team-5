@@ -243,12 +243,12 @@ return [
 
         // Chat
         'chat' => [
-            'display' => false,
+            'display' => true,
         ],
 
         // Page Toolbar
         'toolbar' => [
-            'display' => false
+            'display' => true
         ],
 
         // Scrolltop

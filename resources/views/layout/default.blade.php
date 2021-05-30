@@ -22,6 +22,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="description" content="@yield('page_description', $page_description ?? '')"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
+
+        {{-- Google --}}
+        @yield('google-script')
+
         {{-- Favicon --}}
         <link rel="shortcut icon" href="{{ asset('media/logos/favicon.ico') }}" />
 
@@ -40,6 +44,22 @@ License: You must have a valid license purchased only from themeforest(the above
 
         {{-- Includable CSS --}}
         @yield('styles')
+        <style>
+            .mobile-logo img{
+                width: 198px;
+                height: 40px;
+            }
+
+            .header-logo img{
+                width: 198px;
+                height: 40px;
+            }
+
+            .brand-logo img{
+                width: 198px;
+                height: 40px;
+            }
+        </style>
     </head>
 
     <body {{ Metronic::printAttrs('body') }} {{ Metronic::printClasses('body') }}>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Order;
+use App\Models\Parking;
 use App\Models\User;
 use App\Models\Payment;
 
@@ -83,7 +84,9 @@ class UserController extends Controller
         $page_title = 'Car List';
         $page_description = '';
 
-        return view('pages.user.car-list', compact('page_title', 'page_description'))->with('cars', Car::where('status', 'free')->get());
+        return view('pages.user.car-list', compact('page_title', 'page_description'))
+            ->with('cars', Car::where('status', 'free')->get())
+            ->with('parkings', Parking::all());
     }
 
     public function orderCar($carId)
