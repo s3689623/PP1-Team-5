@@ -1,49 +1,113 @@
 {{-- Extends layout --}}
 @extends('layout.default')
 
+@section('styles')
+    <style>
+        .car {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+@endsection
+
 {{-- Content --}}
 @section('content')
-
-    {{-- Dashboard 1 --}}
-
     <div class="row">
-        <div class="col-lg-6 col-xxl-4">
-            @include('pages.widgets._widget-1', ['class' => 'card-stretch gutter-b'])
-        </div>
+        <div class="col-12">
+            <div class="card card-custom card-stretch gutter-b">
+                {{-- Header --}}
+                <div class="card-header">
+                    <h1>Welcome</h1>
+                </div>
 
-        <div class="col-lg-6 col-xxl-4">
-            @include('pages.widgets._widget-2', ['class' => 'card-stretch gutter-b'])
-        </div>
+                {{-- Body --}}
+                <div class="card-body pt-0">
+                    {{-- Item --}}
+                    <img src="{{ asset('media/share-bar/logo-large.png') }}" class="align-self-center" style="width: 250px;height: 150px"/>
+                    <p>
+                        Looking for a car in Australia? There are hundreds of cars belonging to the Shareber，Whether you're looking for a large car for a weekend away with friends, or something smaller for a trip to the supermarket, you can be sure to find the right car for you. With your free membership, you can choose from over 4,000 cars around the country. We have cars close to home, airports, and train stations to help you get around.
 
-        <div class="col-lg-6 col-xxl-4">
-            @include('pages.widgets._widget-3', ['class' => 'card-stretch card-stretch-half gutter-b'])
-            @include('pages.widgets._widget-4', ['class' => 'card-stretch card-stretch-half gutter-b'])
-        </div>
+                        Shareber gives you access to a range of cars, including the latest hybrids, without the hassle of car ownership. Access cars by the hour or day, 24/7.
 
-        <div class="col-lg-6 col-xxl-4 order-1 order-xxl-1">
-            @include('pages.widgets._widget-5', ['class' => 'card-stretch gutter-b'])
-        </div>
+                        Choose the right car for every occasion, accessed when and where you need it - all run from a web page.
+                    </p>
+                </div>
+            </div>
 
-        <div class="col-xxl-8 order-2 order-xxl-1">
-            @include('pages.widgets._widget-6', ['class' => 'card-stretch gutter-b'])
-        </div>
-
-        <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
-            @include('pages.widgets._widget-7', ['class' => 'card-stretch gutter-b'])
-        </div>
-
-        <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
-            @include('pages.widgets._widget-8', ['class' => 'card-stretch gutter-b'])
-        </div>
-
-        <div class="col-lg-12 col-xxl-4 order-1 order-xxl-2">
-            @include('pages.widgets._widget-9', ['class' => 'card-stretch gutter-b'])
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-12 col-xxl-4">
+            <div class="card card-custom card-stretch gutter-b">
+                {{-- Header --}}
+                <div class="card-header border-0">
+                </div>
+
+                {{-- Body --}}
+                <div class="card-body pt-0">
+                    {{-- Item --}}
+                    <a href="{{url('member/car/list')}}">
+                    <img src="{{ asset('media/share-bar/index-car-1.png') }}" class="align-self-center car"/>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-xxl-4">
+            <div class="card card-custom card-stretch gutter-b">
+                {{-- Header --}}
+                <div class="card-header border-0">
+                </div>
+
+                {{-- Body --}}
+                <div class="card-body pt-0">
+                    {{-- Item --}}
+                    <a href="{{url('member/car/list')}}">
+                    <img src="{{ asset('media/share-bar/index-car-2.png') }}" class="align-self-center car"/>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-xxl-4">
+            <div class="card card-custom card-stretch gutter-b">
+                {{-- Header --}}
+                <div class="card-header border-0">
+                </div>
+
+                {{-- Body --}}
+                <div class="card-body pt-0">
+                    {{-- Item --}}
+                    <a href="{{url('member/car/list')}}">
+                        <img src="{{ asset('media/share-bar/index-car-3.png') }}" class="align-self-center car"/>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-xxl-4">
+            <div class="card card-custom card-stretch gutter-b">
+                {{-- Header --}}
+                <div class="card-header border-0">
+                </div>
+
+                {{-- Body --}}
+                <div class="card-body pt-0">
+                    {{-- Item --}}
+                    <a href="{{url('member/car/list')}}">
+                    <img src="{{ asset('media/share-bar/index-car-4.png') }}" class="align-self-center car"/>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection
 
 {{-- Scripts Section --}}
 @section('scripts')
-    <script src="{{ asset('js/pages/widgets.js') }}" type="text/javascript"></script>
 @endsection
